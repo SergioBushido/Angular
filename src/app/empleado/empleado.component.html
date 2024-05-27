@@ -1,1 +1,8 @@
-<p>Aqui va un empleado</p>
+<p>nombre del empleado : {{nombre}}</p>
+<p>apellido del empleado : {{apellidos}}</p>
+<p>edad del empleado : {{getEdad()}}</p>
+<p>empresa : {{empresa.value}}</p>
+Introduce la empresa: <input type="text" #empresa>
+<br/>
+<br/>
+<input type="button" value="dale" (click)="llamaEmpresa(empresa.value)">
