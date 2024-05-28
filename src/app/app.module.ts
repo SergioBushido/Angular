@@ -8,13 +8,15 @@ import { EmpleadoComponent } from './empleado/empleado.component';
 import { FormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadosComponent,
     EmpleadoComponent,
-    UserListComponent
+    UserListComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
