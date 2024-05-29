@@ -11,6 +11,7 @@ export class AppComponent {
   registrado=false
   nombre: string = "";  
   apellido: string = "";  
+  cargo:string="";
   entradas: {titulo: string}[];  // Si no se especifica el tipo no funciona
 
   constructor(){
