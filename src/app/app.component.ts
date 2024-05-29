@@ -6,7 +6,25 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'sergio';
+  titulo = 'Registro de usuarios';
+  mensaje=""
+  registrado=false
+  nombre: string = "";  
+  apellido: string = "";  
+  entradas: {titulo: string}[];  // Si no se especifica el tipo no funciona
 
-  saludo= 'Buenos días';
+  constructor(){
+    this.entradas=[
+      {titulo:"python cada día más presente"},
+      {titulo:"Java presente desde 20 años"},
+      {titulo:"JavaScript cada vez mas funciuonal"},
+      {titulo:"Kotlin potencia para tus apps"},
+      {titulo:"¿Donde quedo Pascal?"}
+    ];
+  }
+
+  registrarUsuario(){
+    this.registrado=true;
+    this.mensaje="Usuario Registrado";
+  }
 }
