@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { ServicioEmpleadosService } from './servicio-empleados.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,13 @@ import { Empleado } from './empleado.model';
 })
 export class AppComponent {
   titulo = 'Listado de empleados';
+//Hemos creado un servicio (servicio-empleados) primero se registra en appmodule y despues de inyecta creando el
+//contructor en el componente principal
+//luego lo hemos metido en agregarEmpleado para que al darle al boton nos muestre el msj
+constructor(private miServicio:ServicioEmpleadosService){
+
+}
+
   cuadroNombre:string="";
   cuadroApellido:string="";
   cuadroCargo:string="";
@@ -29,6 +37,7 @@ export class AppComponent {
   }
   agregarEmpleado(){
     let miEmpleado=new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+    this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre)
     this.empleados.push(miEmpleado);
   }
 }
