@@ -1,0 +1,22 @@
+<div>
+    <h2>Lista de Teléfonos</h2>
+    <ul>
+      <li *ngFor="let phone of phones">
+        <strong>{{ phone.type }}</strong> -${{ phone.price }}
+        <button (click)="deletePhone(phone.id!)">Eliminar</button>
+        <button (click)="updatePhone(phone)">Actualizar</button>
+      </li>
+    </ul>
+  </div>
+  
+  <div>
+    <h2>Agregar Teléfono</h2>
+    <form (ngSubmit)="addPhone()">
+      <label for="brand">Marca:</label>
+      <input type="text" [(ngModel)]="newPhone.price" name="brand" required>
+      <label for="model">Modelo:</label>
+      <input type="text" [(ngModel)]="newPhone.type" name="model" required>
+      <button type="submit">Agregar</button>
+    </form>
+  </div>
+  

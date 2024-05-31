@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticleComponent } from './components/article/article.component';
+import { PhoneComponent } from './components/phone/phone.component';
+import { PhoneService } from './services/phone.service';
+import { ArticleService } from './services/article.service';
 
 @NgModule({
   declarations: [
@@ -16,15 +19,19 @@ import { ArticleComponent } from './components/article/article.component';
     EmpleadosComponent,
     EmpleadoComponent,
     UserListComponent,
-    ArticleComponent
+    ArticleComponent,
+    PhoneComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
-  providers: [],
+  providers: [PhoneService,
+    ArticleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
