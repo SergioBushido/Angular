@@ -8,17 +8,37 @@ import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.compon
 import { CaracteristicasEmpleadoCComponent } from './caracteristicas-empleado-c/caracteristicas-empleado-c.component';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
 import { EmpleadosService } from './empleados.service';
+import { HomeComponetComponent } from './home-componet/home-componet.component';
+import { ProyectosComponetComponent } from './proyectos-componet/proyectos-componet.component';
+import { QuienesComponetComponent } from './quienes-componet/quienes-componet.component';
+import { ContactoComponetComponent } from './contacto-componet/contacto-componet.component';
+import { RouterModule, Routes } from '@angular/router';
+
+//esto se hace manualmente...routes es del core
+const appRoutes:Routes=[
+
+  {path:'', component:HomeComponetComponent},
+  {path:'proyectos', component:ProyectosComponetComponent},
+  {path:'quienes', component:QuienesComponetComponent},
+  {path:'contacto', component:ContactoComponetComponent}
+
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadoHijoCComponent,
-    CaracteristicasEmpleadoCComponent
+    CaracteristicasEmpleadoCComponent,
+    HomeComponetComponent,
+    ProyectosComponetComponent,
+    QuienesComponetComponent,
+    ContactoComponetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)//le indicamos la constante que hemos creado para las rutas
   ],
   providers: [ServicioEmpleadosService, EmpleadosService],
   bootstrap: [AppComponent]
