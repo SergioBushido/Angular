@@ -1,8 +1,11 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <div>
+        <div><!--con esto hacemos redireccionamiento y pasamos el id
+        y hay que poner esto  {path:'actualiza/:id', component:ActualizaComponentComponent} en appRoutes-->
+          <a [routerLink]="['/actualiza',indice]"> 
           {{indice+1}}: {{ empleadoDeLista.nombre }} {{ empleadoDeLista.apellido }} - {{ empleadoDeLista.cargo }} - ${{ empleadoDeLista.salario }}
+          </a>
         </div>
         <app-caracteristicas-empleado-c (caracteristicasEmpleados)="agregarCaracteristica($event)"></app-caracteristicas-empleado-c>
 
