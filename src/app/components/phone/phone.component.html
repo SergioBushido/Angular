@@ -1,22 +1,35 @@
-<div>
-    <h2>Lista de Teléfonos</h2>
-    <ul>
-      <li *ngFor="let phone of phones">
-        <strong>{{ phone.type }}</strong> -${{ phone.price }}
-        <button (click)="deletePhone(phone.id!)">Eliminar</button>
-        <button (click)="updatePhone(phone)">Actualizar</button>
-      </li>
-    </ul>
-  </div>
-  
-  <div>
-    <h2>Agregar Teléfono</h2>
-    <form (ngSubmit)="addPhone()">
-      <label for="brand">Marca:</label>
-      <input type="text" [(ngModel)]="newPhone.price" name="brand" required>
-      <label for="model">Modelo:</label>
-      <input type="text" [(ngModel)]="newPhone.type" name="model" required>
-      <button type="submit">Agregar</button>
-    </form>
-  </div>
-  
+<div class="container mt-5">
+  <h2 class="mb-4">Lista de Teléfonos</h2>
+  <ul class="list-group">
+    <li *ngFor="let phone of phones" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{ phone.type }}</strong> - ${{ phone.price }}
+      </div>
+      <div>
+        <button class="btn btn-danger btn-sm me-2" (click)="deletePhone(phone.id!)">Eliminar</button>
+        <button class="btn btn-primary btn-sm" (click)="updatePhone(phone)">Actualizar</button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Agregar Teléfono</h2>
+  <form (ngSubmit)="addPhone()" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price:</label>
+      <input type="text" id="price" class="form-control" [(ngModel)]="newPhone.price" name="price" required>
+      <div class="invalid-feedback">
+        Please provide a valid price.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Type:</label>
+      <input type="text" id="type" class="form-control" [(ngModel)]="newPhone.type" name="type" required>
+      <div class="invalid-feedback">
+        Please provide a valid type.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Agregar</button>
+  </form>
+</div>
