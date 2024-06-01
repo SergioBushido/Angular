@@ -18,12 +18,14 @@ export class HomeComponetComponent {
     this.empleados=this.empeladosService.empleados;
   }
 
+  empleados:Empleado[]=[]
+
   cuadroNombre:string="";
   cuadroApellido:string="";
   cuadroCargo:string="";
   cuadroSalario:number=0;
 
-  empleados:Empleado[]=[]
+ 
 
   agregarEmpleado(){
     let miEmpleado=new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
