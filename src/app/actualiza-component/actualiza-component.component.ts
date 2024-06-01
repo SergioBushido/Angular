@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioEmpleadosService } from '../servicio-empleados.service';
 import { EmpleadosService } from '../empleados.service';
 import { Empleado } from '../empleado.model';
@@ -10,18 +10,25 @@ import { Empleado } from '../empleado.model';
   styleUrl: './actualiza-component.component.css'
 })
 export class ActualizaComponentComponent {
-
+  empleados:Empleado[]=[]
   
   //para que el boton de volver funcione hay que inyectar Router en el constructor
   //y utilizar navigate con la ruta donde queremos ir
-  constructor(private router:Router, private miServicio:ServicioEmpleadosService, private empeladosService:EmpleadosService){
+  constructor(private router:Router,private route:ActivatedRoute, private miServicio:ServicioEmpleadosService, private empeladosService:EmpleadosService){
 
   }
 
-  empleados:Empleado[]=[]
+  
 
   ngOnInit(): void {
     this.empleados=this.empeladosService.empleados;
+    this.indice=this.route.snapshot.params['id'];//todo esto para capturar el id de la URL
+    let empleado:Empleado=this.empeladosService.encontrarEmpleado(this.indice);
+
+    this.cuadroNombre=empleado.nombre;
+    this.cuadroApellido=empleado.apellido;
+    this.cuadroCargo=empleado.cargo;
+    this.cuadroSalario=empleado.salario;
   }
 
   
@@ -35,12 +42,14 @@ export class ActualizaComponentComponent {
   cuadroCargo:string="";
   cuadroSalario:number=0;
 
+  indice:number;
+
  
 
-  agregarEmpleado(){
+  actualizaEmpleado(){
     let miEmpleado=new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
     //this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre)
-    this.empeladosService.agregarEmpleadoServicio(miEmpleado);//es el segundo paramtro del constructor
+    this.empeladosService.actualizarEmpleado(this.indice,miEmpleado);
     this.router.navigate([""]);
   }
 }
