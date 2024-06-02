@@ -52,4 +52,10 @@ export class ActualizaComponentComponent {
     this.empeladosService.actualizarEmpleado(this.indice,miEmpleado);
     this.router.navigate([""]);
   }
+
+  eliminaEmpleado(){
+
+    this.empeladosService.eliminarEmpleado(this.indice);
+    this.router.navigate([""]);
+  }
 }
