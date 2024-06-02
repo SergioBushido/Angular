@@ -11,6 +11,8 @@ import { Empleado } from '../empleado.model';
 })
 export class ActualizaComponentComponent {
   empleados:Empleado[]=[]
+
+  accion:number;
   
   //para que el boton de volver funcione hay que inyectar Router en el constructor
   //y utilizar navigate con la ruta donde queremos ir
@@ -21,6 +23,8 @@ export class ActualizaComponentComponent {
   
 
   ngOnInit(): void {
+
+    this.accion=parseInt(this.route.snapshot.queryParams['accion']);
     this.empleados=this.empeladosService.empleados;
     this.indice=this.route.snapshot.params['id'];//todo esto para capturar el id de la URL
     let empleado:Empleado=this.empeladosService.encontrarEmpleado(this.indice);
@@ -45,7 +49,7 @@ export class ActualizaComponentComponent {
   indice:number;
 
  
-
+/*
   actualizaEmpleado(){
     let miEmpleado=new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
     //this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre)
@@ -57,5 +61,18 @@ export class ActualizaComponentComponent {
 
     this.empeladosService.eliminarEmpleado(this.indice);
     this.router.navigate([""]);
+  }
+  */
+
+  actualizaEmpleado(){
+    if(this.accion==1){
+    let miEmpleado=new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+    //this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre)
+    this.empeladosService.actualizarEmpleado(this.indice,miEmpleado);
+    this.router.navigate([""]);
+    }else{
+    this.empeladosService.eliminarEmpleado(this.indice);
+    this.router.navigate([""]);
+  }
   }
 }
