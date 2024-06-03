@@ -1,0 +1,36 @@
+<div>
+    <h1>Blogs</h1>
+    <ul>
+      <li *ngFor="let blog of blogs" (click)="selectBlog(blog)">
+        {{ blog.title }} - {{ blog.date }}
+      </li>
+    </ul>
+    
+    <div *ngIf="selectedBlog">
+      <h2>Edit Blog</h2>
+      <label>
+        Title:
+        <input [(ngModel)]="selectedBlog.title" placeholder="title">
+      </label>
+      <label>
+        Date:
+        <input [(ngModel)]="selectedBlog.date" placeholder="date">
+      </label>
+      <button (click)="updateBlog()">Update Blog</button>
+      <button (click)="deleteBlog(selectedBlog.id)">Delete Blog</button>
+    </div>
+  
+    <div>
+      <h2>Create Blog</h2>
+      <label>
+        Title:
+        <input [(ngModel)]="newBlog.title" placeholder="title">
+      </label>
+      <label>
+        Date:
+        <input [(ngModel)]="newBlog.date" placeholder="date">
+      </label>
+      <button (click)="createBlog()">Create Blog</button>
+    </div>
+  </div>
+  

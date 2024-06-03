@@ -12,6 +12,8 @@ import { ArticleComponent } from './components/article/article.component';
 import { PhoneComponent } from './components/phone/phone.component';
 import { PhoneService } from './services/phone.service';
 import { ArticleService } from './services/article.service';
+import { BlogComponent } from './components/blog/blog.component';
+import { BlogService } from './services/blog.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ArticleService } from './services/article.service';
     EmpleadoComponent,
     UserListComponent,
     ArticleComponent,
-    PhoneComponent
+    PhoneComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { ArticleService } from './services/article.service';
     
   ],
   providers: [PhoneService,
-    ArticleService
+    ArticleService, BlogService
   ],
   bootstrap: [AppComponent]
 })
