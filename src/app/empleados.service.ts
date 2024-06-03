@@ -10,14 +10,23 @@ export class EmpleadosService {
 
   constructor(private servicioVentanaEmergente:ServicioEmpleadosService, private dataService:DataServices) { }
 
-  
-  empleados:Empleado[]=[
+  empleados:Empleado[]=[];
+  /*empleados:Empleado[]=[
 
     new Empleado("Sergio","Fernández","Presidente",7500),
     new Empleado("Ana","Prada","Directora",5500),
     new Empleado("Carlos","García","Jefe sec",3500),
     new Empleado("Antoniuo","Menéndez","Admin",2500),
-  ];
+  ];*/
+
+  setEmpleados(misEmpleados:Empleado[]){
+    this.empleados=misEmpleados;
+
+  }
+
+  obtenerEmpleados(){
+    return this.dataService.cargarEmleados();//esto devuelve un observable..actualiza los cambios en tiempo real
+  }
 
 
   agregarEmpleadoServicio(empleado:Empleado){

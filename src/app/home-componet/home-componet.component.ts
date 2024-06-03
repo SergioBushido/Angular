@@ -15,7 +15,14 @@ export class HomeComponetComponent {
  
 
   ngOnInit(): void {
-    this.empleados=this.empeladosService.empleados;
+    //this.empleados=this.empeladosService.empleados;//esto carga el array de empleados
+    //aqui se cargan los datos de firebase a la pagina conb el subcribe y conb el object
+    this.empeladosService.obtenerEmpleados().subscribe(misEmpleados=>{
+      console.log(misEmpleados);
+      this.empleados=Object.values(misEmpleados);
+
+      this.empeladosService.setEmpleados(this.empleados);
+    });
   }
 
   empleados:Empleado[]=[]
