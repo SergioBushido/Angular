@@ -21,6 +21,7 @@ export class HomeComponetComponent {
       console.log(misEmpleados);
       this.empleados=Object.values(misEmpleados);
 
+      //esto es para que almacene los datos en el arry, sin esto solo se va mostrando uno y el nuevo pisa al anterior
       this.empeladosService.setEmpleados(this.empleados);
     });
   }
