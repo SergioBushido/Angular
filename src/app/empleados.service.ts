@@ -59,8 +59,9 @@ export class EmpleadosService {
   }
 
   eliminarEmpleado(indice:number){
-    this.empleados.splice(indice,1);
-
+    this.empleados.splice(indice,1);//elimina del array
+    this.dataService.eliminarEmpleados(indice);//elimina de la bbdd
+    if(this.empleados !=null) this.dataService.guardarEmpleados(this.empleados);
   }
 
 }

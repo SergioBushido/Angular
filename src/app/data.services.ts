@@ -26,4 +26,12 @@ export class DataServices{
         error=>console.log("error"+ error),
     );
   }
+
+ eliminarEmpleados(indice:number){
+    let url='https://mis-clientes-f97e0-default-rtdb.europe-west1.firebasedatabase.app/datos/' + indice + '.json';
+    this.httClient.delete(url).subscribe(
+        Response=>console.log("se eliminado el empleado" +Response),
+        error=>console.log("error"+ error),
+    );
+  }
 }
