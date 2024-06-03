@@ -12,11 +12,7 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   getBlogs(): Observable<Blog[]> {
-    return this.http.get<Blog[]>(`${this.apiUrl}/blog`);
-  }
-
-  getBlog(id: number): Observable<Blog> {
-    return this.http.get<Blog>(`${this.apiUrl}/${id}`);
+    return this.http.get<Blog[]>(this.apiUrl);
   }
 
   createBlog(blog: Blog): Observable<Blog> {
@@ -24,10 +20,12 @@ export class BlogService {
   }
 
   updateBlog(id: number, blog: Blog): Observable<Blog> {
-    return this.http.put<Blog>(`${this.apiUrl}/${id}`, blog);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<Blog>(url, blog);
   }
 
   deleteBlog(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 }

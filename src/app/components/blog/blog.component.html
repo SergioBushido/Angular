@@ -1,36 +1,43 @@
-<div>
-    <h1>Blogs</h1>
-    <ul>
-      <li *ngFor="let blog of blogs" (click)="selectBlog(blog)">
-        {{ blog.title }} - {{ blog.date }}
-      </li>
-    </ul>
-    
-    <div *ngIf="selectedBlog">
-      <h2>Edit Blog</h2>
-      <label>
-        Title:
-        <input [(ngModel)]="selectedBlog.title" placeholder="title">
-      </label>
-      <label>
-        Date:
-        <input [(ngModel)]="selectedBlog.date" placeholder="date">
-      </label>
-      <button (click)="updateBlog()">Update Blog</button>
-      <button (click)="deleteBlog(selectedBlog.id)">Delete Blog</button>
-    </div>
+<div class="container mt-4">
+  <h1 class="mb-4">Blogs</h1>
+  <ul class="list-group mb-4">
+    <li *ngFor="let blog of blogs" class="list-group-item list-group-item-action" (click)="selectBlog(blog)">
+      <strong>{{ blog.title }}</strong> - <span class="text-muted">{{ blog.date }}</span>
+    </li>
+  </ul>
   
-    <div>
-      <h2>Create Blog</h2>
-      <label>
-        Title:
-        <input [(ngModel)]="newBlog.title" placeholder="title">
-      </label>
-      <label>
-        Date:
-        <input [(ngModel)]="newBlog.date" placeholder="date">
-      </label>
-      <button (click)="createBlog()">Create Blog</button>
+  <div *ngIf="selectedBlog" class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title">Edit Blog</h2>
+      <form>
+        <div class="mb-3">
+          <label for="editTitle" class="form-label">Title:</label>
+          <input id="editTitle" [(ngModel)]="selectedBlog.title" name="title" placeholder="title" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="editDate" class="form-label">Date:</label>
+          <input id="editDate" [(ngModel)]="selectedBlog.date" name="date" placeholder="date" class="form-control">
+        </div>
+        <button type="button" (click)="updateBlog()" class="btn btn-primary me-2">Update Blog</button>
+        <button type="button" (click)="deleteBlog(selectedBlog.id)" class="btn btn-danger">Delete Blog</button>
+      </form>
     </div>
   </div>
-  
+
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Create Blog</h2>
+      <form>
+        <div class="mb-3">
+          <label for="createTitle" class="form-label">Title:</label>
+          <input id="createTitle" [(ngModel)]="newBlog.title" name="newTitle" placeholder="title" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="createDate" class="form-label">Date:</label>
+          <input id="createDate" [(ngModel)]="newBlog.date" name="newDate" placeholder="date" class="form-control">
+        </div>
+        <button type="button" (click)="createBlog()" class="btn btn-success">Create Blog</button>
+      </form>
+    </div>
+  </div>
+</div>

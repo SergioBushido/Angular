@@ -29,6 +29,9 @@ export class BlogComponent implements OnInit {
   }
 
   createBlog(): void {
+    if (!this.newBlog.date) {
+      this.newBlog.date = new Date().toISOString().split('T')[0]; // para mes dia año
+    }
     this.blogService.createBlog(this.newBlog).subscribe((blog: Blog) => {
       this.blogs.push(blog);
       this.newBlog = { id: 0, title: '', date: '' }; // reset the form
