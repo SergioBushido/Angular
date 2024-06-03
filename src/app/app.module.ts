@@ -15,6 +15,8 @@ import { ContactoComponetComponent } from './contacto-componet/contacto-componet
 import { RouterModule, Routes } from '@angular/router';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
 import { ErrorPersonalizadoComponentComponent } from './error-personalizado-component/error-personalizado-component.component';
+import { DataServices } from './data.services';
+import { HttpClientModule } from '@angular/common/http';
 
 //esto se hace manualmente...routes es del core
 const appRoutes:Routes=[
@@ -44,9 +46,10 @@ const appRoutes:Routes=[
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)//le indicamos la constante que hemos creado para las rutas
+    RouterModule.forRoot(appRoutes),//le indicamos la constante que hemos creado para las rutas
+    HttpClientModule
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService],
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
