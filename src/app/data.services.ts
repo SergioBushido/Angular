@@ -1,14 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Empleado } from "./empleado.model";
+import { LoginService } from "./login/login.service";
 
 
 @Injectable()
 export class DataServices{
-  constructor(private httClient:HttpClient) {} 
+  constructor(private httClient:HttpClient, private loginservice:LoginService) {} 
 
   cargarEmleados(){
-    return this.httClient.get('https://mis-clientes-f97e0-default-rtdb.europe-west1.firebasedatabase.app/datos.json');
+    const token=this.loginservice.getIdToken();
+    return this.httClient.get('https://mis-clientes-f97e0-default-rtdb.europe-west1.firebasedatabase.app/datos.json?auth=' + token);
   }
 
   guardarEmpleados(empleados:Empleado[]){

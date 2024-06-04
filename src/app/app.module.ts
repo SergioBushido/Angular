@@ -17,6 +17,8 @@ import { ActualizaComponentComponent } from './actualiza-component/actualiza-com
 import { ErrorPersonalizadoComponentComponent } from './error-personalizado-component/error-personalizado-component.component';
 import { DataServices } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
 
 //esto se hace manualmente...routes es del core
 const appRoutes:Routes=[
@@ -26,6 +28,7 @@ const appRoutes:Routes=[
   {path:'quienes', component:QuienesComponetComponent},
   {path:'contacto', component:ContactoComponetComponent},
   {path:'actualiza/:id', component:ActualizaComponentComponent},
+  {path:'login', component:LoginComponent},
   {path:'**', component:ErrorPersonalizadoComponentComponent}
 
 ]
@@ -40,16 +43,19 @@ const appRoutes:Routes=[
     QuienesComponetComponent,
     ContactoComponetComponent,
     ActualizaComponentComponent,
-    ErrorPersonalizadoComponentComponent
+    ErrorPersonalizadoComponentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),//le indicamos la constante que hemos creado para las rutas
-    HttpClientModule
+    HttpClientModule,
+    
+
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService, DataServices],
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
