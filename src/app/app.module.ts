@@ -19,6 +19,7 @@ import { DataServices } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 //esto se hace manualmente...routes es del core
 const appRoutes:Routes=[
@@ -55,7 +56,7 @@ const appRoutes:Routes=[
     
 
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService, DataServices, LoginService],
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices, LoginService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

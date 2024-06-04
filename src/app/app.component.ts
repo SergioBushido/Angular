@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { LoginService } from './login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,12 @@ import 'firebase/compat/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  constructor(private loginService:LoginService){
+
+  }
+
+
   ngOnInit(): void {
     firebase.initializeApp({
       apiKey: "AIzaSyCkIJXspYhifTjY5grc8OIYeT7PsQ0imVs",
@@ -17,5 +25,14 @@ export class AppComponent implements OnInit {
       messagingSenderId: "190132073484",
       appId: "YOUR_APP_ID_HERE"
     });
+  }
+
+  estaLogeado(){
+    return this.loginService.estaLogeado();
+  }
+
+  logout(){
+    this.loginService.logout();
+    
   }
 }
