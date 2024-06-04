@@ -15,6 +15,7 @@ import { ContactoComponetComponent } from './contacto-componet/contacto-componet
 import { RouterModule, Routes } from '@angular/router';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
 import { ErrorPersonalizadoComponentComponent } from './error-personalizado-component/error-personalizado-component.component';
+import { LoginComponent } from './login/login.component';
 
 //esto se hace manualmente...routes es del core
 const appRoutes:Routes=[
@@ -24,6 +25,7 @@ const appRoutes:Routes=[
   {path:'quienes', component:QuienesComponetComponent},
   {path:'contacto', component:ContactoComponetComponent},
   {path:'actualiza/:id', component:ActualizaComponentComponent},
+  {path:'login', component:LoginComponent},
   {path:'**', component:ErrorPersonalizadoComponentComponent}
 
 ]
@@ -38,7 +40,8 @@ const appRoutes:Routes=[
     QuienesComponetComponent,
     ContactoComponetComponent,
     ActualizaComponentComponent,
-    ErrorPersonalizadoComponentComponent
+    ErrorPersonalizadoComponentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
