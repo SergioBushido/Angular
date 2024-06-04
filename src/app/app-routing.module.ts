@@ -4,13 +4,15 @@ import { UserListComponent } from './user-list/user-list.component';
 import { ArticleComponent } from './components/article/article.component';
 import { PhoneComponent } from './components/phone/phone.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { CodeComponent } from './components/code/code.component';
 
 const routes: Routes = [
 
   { path: 'user-list', component: UserListComponent },
   { path: 'articles', component: ArticleComponent },
   { path: 'phones', component: PhoneComponent },
-  { path: 'blog', component: BlogComponent }
+  { path: 'blog', component: BlogComponent },
+  { path: 'codes', component: CodeComponent },
   
 ];
 

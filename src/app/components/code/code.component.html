@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <h2>Codes List</h2>
+    <ul class="list-group mb-4">
+      <li *ngFor="let code of codes" class="list-group-item d-flex justify-content-between align-items-center">
+        <span (click)="selectCode(code)" style="cursor: pointer;">
+          {{ code.packageName }} - {{ code.file }}
+        </span>
+        <button class="btn btn-danger btn-sm" (click)="deleteCode(code.id)">Delete</button>
+      </li>
+    </ul>
+  
+    <div *ngIf="selectedCode" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title">Edit Code</h2>
+        <div class="form-group">
+          <label for="editPackageName">Package Name:</label>
+          <input id="editPackageName" class="form-control" [(ngModel)]="selectedCode.packageName" placeholder="Package Name"/>
+        </div>
+        <div class="form-group">
+          <label for="editFile">File:</label>
+          <input id="editFile" class="form-control" [(ngModel)]="selectedCode.file" placeholder="File"/>
+        </div>
+        <button class="btn btn-primary mt-3" (click)="saveCode()">Save</button>
+        <button class="btn btn-secondary mt-3" (click)="resetSelection()">Cancel</button>
+      </div>
+    </div>
+  
+    <div *ngIf="!selectedCode" class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title">New Code</h2>
+        <div class="form-group">
+          <label for="newPackageName">Package Name:</label>
+          <input id="newPackageName" class="form-control" [(ngModel)]="newCode.packageName" placeholder="Package Name"/>
+        </div>
+        <div class="form-group">
+          <label for="newFile">File:</label>
+          <input id="newFile" class="form-control" [(ngModel)]="newCode.file" placeholder="File"/>
+        </div>
+        <button class="btn btn-success mt-3" (click)="saveCode()">Create</button>
+      </div>
+    </div>
+  </div>
+  
