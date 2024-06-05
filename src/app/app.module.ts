@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { loginGuardian } from './login/login-guardian';
 
 //esto se hace manualmente...routes es del core
 const appRoutes:Routes=[
@@ -27,7 +28,7 @@ const appRoutes:Routes=[
   {path:'', component:HomeComponetComponent},
   {path:'proyectos', component:ProyectosComponetComponent},
   {path:'quienes', component:QuienesComponetComponent},
-  {path:'contacto', component:ContactoComponetComponent},
+  {path:'contacto', component:ContactoComponetComponent, canActivate:[loginGuardian]},//con esto se proteje la pagina con el guardian
   {path:'actualiza/:id', component:ActualizaComponentComponent},
   {path:'login', component:LoginComponent},
   {path:'**', component:ErrorPersonalizadoComponentComponent}
@@ -56,7 +57,7 @@ const appRoutes:Routes=[
     
 
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService, DataServices, LoginService, CookieService],
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices, LoginService, CookieService, loginGuardian],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
