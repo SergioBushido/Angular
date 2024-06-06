@@ -1,0 +1,11 @@
+<h1>Pruebas en Angular</h1>
+<p>Esto viene de app component</p>
+<button (click)="toggleLibros()">
+  {{ mostrarLibros ? 'Ocultar Libros' : 'Mostrar Libros' }}
+</button>
+<button (click)="togglePeliculas()">
+  {{ mostrarPeliculas ? 'Ocultar Películas' : 'Mostrar Películas' }}
+</button>
+
+<app-libros *ngIf="mostrarLibros"></app-libros>
+<app-peliculas *ngIf="mostrarPeliculas"></app-peliculas>
