@@ -1,0 +1,12 @@
+<h1>Lista de zapatillas</h1>
+<ul>
+    <li *ngFor="let deportiva of zapatillas">{{deportiva.nombre}}-{{deportiva.marca}}-{{deportiva.color}}-{{deportiva.precio}}
+        <span *ngIf="deportiva.precio < 100" [style.background]="deportiva.precio < 100 ? 'green': 'transparent'">OFERTA!!!</span>
+    </li>
+    
+</ul>
+
+<h2>Lista de marcas</h2>
+<ul>
+    <li *ngFor="let marca of marcas">{{marca}}</li>
+</ul>
