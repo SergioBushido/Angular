@@ -16,6 +16,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogService } from './services/blog.service';
 import { CodeComponent } from './components/code/code.component';
 import { CodeService } from './services/code.service';
+import { ProjectService } from './services/project.service';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { CodeService } from './services/code.service';
     ArticleComponent,
     PhoneComponent,
     BlogComponent,
-    CodeComponent
+    CodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { CodeService } from './services/code.service';
     
   ],
   providers: [PhoneService,
-    ArticleService, BlogService, CodeService
+    ArticleService, BlogService, CodeService, PhoneService, ProjectService
   ],
   bootstrap: [AppComponent]
 })

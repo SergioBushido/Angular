@@ -1,0 +1,19 @@
+<div class="project-list">
+    <h1>Project List</h1>
+    <ul>
+      <li *ngFor="let project of projects" (click)="selectProject(project)">
+        <h2>{{ project.description }}</h2>
+        <p>Language: {{ project.language }}</p>
+        <p>Status: {{ project.isOpen ? 'Open' : 'Closed' }}</p>
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="selectedProject" class="project-details">
+    <h2>Project Details</h2>
+    <p><strong>Description:</strong> {{ selectedProject?.description ?? '' }}</p>
+    <p><strong>Language:</strong> {{ selectedProject?.language ?? '' }}</p>
+    <p><strong>Status:</strong> {{ selectedProject?.isOpen ? 'Open' : 'Closed' }}</p>
+    <button (click)="clearSelection()">Clear Selection</button>
+  </div>
+  

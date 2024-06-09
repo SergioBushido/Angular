@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'phones', component: PhoneComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'codes', component: CodeComponent },
+  { path: 'project', component: CodeComponent },
   
 ];
 
