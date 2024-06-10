@@ -5,6 +5,8 @@ import { ArticleComponent } from './components/article/article.component';
 import { PhoneComponent } from './components/phone/phone.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { CodeComponent } from './components/code/code.component';
+import { TagComponent } from './components/tag/tag.component';
+import { ProjectComponent } from './components/project/project.component';
 
 const routes: Routes = [
 
@@ -13,7 +15,8 @@ const routes: Routes = [
   { path: 'phones', component: PhoneComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'codes', component: CodeComponent },
-  { path: 'project', component: CodeComponent },
+  { path: 'project', component: ProjectComponent },
+  { path: 'tags', component: TagComponent },
   
 ];
 

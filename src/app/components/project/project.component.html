@@ -1,19 +1,52 @@
-<div class="project-list">
-    <h1>Project List</h1>
-    <ul>
-      <li *ngFor="let project of projects" (click)="selectProject(project)">
-        <h2>{{ project.description }}</h2>
-        <p>Language: {{ project.language }}</p>
-        <p>Status: {{ project.isOpen ? 'Open' : 'Closed' }}</p>
-      </li>
-    </ul>
+<div class="container mt-4">
+  <h2 class="mb-4">Projects</h2>
+
+  <!-- Formulario para Crear/Actualizar Project -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h3 class="card-title">{{ isEditMode ? 'Edit Project' : 'New Project' }}</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="saveProject()">
+        <div class="mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <input type="text" id="description" class="form-control" [(ngModel)]="project.description" name="description" required>
+        </div>
+        <div class="mb-3">
+          <label for="language" class="form-label">Language:</label>
+          <input type="text" id="language" class="form-control" [(ngModel)]="project.language" name="language" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" id="isOpen" class="form-check-input" [(ngModel)]="project.isOpen" name="isOpen">
+          <label for="isOpen" class="form-check-label">Is Open</label>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Create' }}</button>
+        <button type="button" class="btn btn-secondary" (click)="clearSelection()">Cancel</button>
+      </form>
+    </div>
   </div>
-  
-  <div *ngIf="selectedProject" class="project-details">
-    <h2>Project Details</h2>
-    <p><strong>Description:</strong> {{ selectedProject?.description ?? '' }}</p>
-    <p><strong>Language:</strong> {{ selectedProject?.language ?? '' }}</p>
-    <p><strong>Status:</strong> {{ selectedProject?.isOpen ? 'Open' : 'Closed' }}</p>
-    <button (click)="clearSelection()">Clear Selection</button>
+
+  <!-- Lista de Projects -->
+  <ul class="list-group">
+    <li *ngFor="let project of projects" (click)="selectProject(project)" [class.list-group-item-action]="project !== selectedProject" [class.active]="project === selectedProject" class="list-group-item d-flex justify-content-between align-items-center">
+      {{ project.description }} - {{ project.language }} - {{ project.isOpen ? 'Open' : 'Closed' }}
+      <div>
+        <button class="btn btn-info btn-sm me-2" (click)="selectProject(project); $event.stopPropagation()">Edit</button>
+        <button (click)="deleteProject(project.id); $event.stopPropagation()" class="btn btn-danger btn-sm">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Detalles del Project Seleccionado -->
+  <div *ngIf="selectedProject && !isEditMode" class="card mt-4">
+    <div class="card-header">
+      <h3 class="card-title">Project Details</h3>
+    </div>
+    <div class="card-body">
+      <p><strong>Description:</strong> {{ selectedProject.description }}</p>
+      <p><strong>Language:</strong> {{ selectedProject.language }}</p>
+      <p><strong>Is Open:</strong> {{ selectedProject.isOpen ? 'Yes' : 'No' }}</p>
+      <button class="btn btn-secondary" (click)="clearSelection()">Clear Selection</button>
+    </div>
   </div>
-  
+</div>

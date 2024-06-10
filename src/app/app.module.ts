@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { EmpleadoComponent } from './empleado/empleado.component';
-import { FormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ArticleComponent } from './components/article/article.component';
 import { PhoneComponent } from './components/phone/phone.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { CodeComponent } from './components/code/code.component';
+import { TagComponent } from './components/tag/tag.component';
+
 import { PhoneService } from './services/phone.service';
 import { ArticleService } from './services/article.service';
-import { BlogComponent } from './components/blog/blog.component';
 import { BlogService } from './services/blog.service';
-import { CodeComponent } from './components/code/code.component';
 import { CodeService } from './services/code.service';
 import { ProjectService } from './services/project.service';
-
+import { ProjectComponent } from './components/project/project.component';
 
 @NgModule({
   declarations: [
@@ -29,16 +31,21 @@ import { ProjectService } from './services/project.service';
     PhoneComponent,
     BlogComponent,
     CodeComponent,
+    TagComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    
+    HttpClientModule
   ],
-  providers: [PhoneService,
-    ArticleService, BlogService, CodeService, PhoneService, ProjectService
+  providers: [
+    PhoneService,
+    ArticleService,
+    BlogService,
+    CodeService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })

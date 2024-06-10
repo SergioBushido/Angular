@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Tags</h2>
+  
+    <!-- Formulario para Crear/Actualizar Tag -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h3 class="card-title">{{ isEditMode ? 'Editar Tag' : 'Nuevo Tag' }}</h3>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="saveTag()">
+          <div class="mb-3">
+            <label for="label" class="form-label">Label:</label>
+            <input type="text" id="label" class="form-control" [(ngModel)]="newTag.label" name="label" required>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Date:</label>
+            <input type="date" id="date" class="form-control" [(ngModel)]="newTag.date" name="date" required>
+          </div>
+          <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+          <button type="button" class="btn btn-secondary" (click)="clearSelection()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Lista de Tags -->
+    <ul class="list-group">
+      <li *ngFor="let tag of tags" (click)="selectTag(tag)" [class.list-group-item-action]="tag !== selectedTag" [class.active]="tag === selectedTag" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ tag.label }} - {{ tag.date | date:'yyyy-MM-dd' }}
+        <button (click)="deleteTag(tag.id); $event.stopPropagation()" class="btn btn-danger btn-sm">Eliminar</button>
+      </li>
+    </ul>
+  
+    <!-- Detalles del Tag Seleccionado -->
+    <div *ngIf="selectedTag && !isEditMode" class="card mt-4">
+      <div class="card-header">
+        <h3 class="card-title">Detalles del Tag</h3>
+      </div>
+      <div class="card-body">
+        <p><strong>Label:</strong> {{ selectedTag.label }}</p>
+        <p><strong>Date:</strong> {{ selectedTag.date | date:'yyyy-MM-dd' }}</p>
+        <button class="btn btn-secondary" (click)="clearSelection()">Clear Selection</button>
+      </div>
+    </div>
+  </div>
+  
