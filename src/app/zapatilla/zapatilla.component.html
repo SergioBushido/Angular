@@ -10,3 +10,9 @@
 <ul>
     <li *ngFor="let marca of marcas">{{marca}}</li>
 </ul>
+
+<p>Añadir Marca</p>
+<input type="text" [(ngModel)]="mi_marca" (blur)="onBlur()">
+<button (click)="getMarca()">Marca</button>
+<button (click)="addMarca()">Añadir Marca</button>
+<p>{{mi_marca}}</p>

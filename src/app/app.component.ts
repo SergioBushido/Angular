@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'master';
 
-  mostrarLibros: boolean = true;
-  mostrarPeliculas: boolean = true;
+  mostrarLibros: boolean = false;
+  mostrarPeliculas: boolean = false;
 
   toggleLibros() {
     this.mostrarLibros = !this.mostrarLibros;

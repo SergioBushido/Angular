@@ -1,4 +1,10 @@
 <h1>Pruebas en Angular</h1>
+<nav>
+  <a [routerLink]="['/']">Home</a>&nbsp;
+  <a [routerLink]="['/peliculas']">peliculas</a>&nbsp;
+  <a [routerLink]="['/zapatillas']">zapatillas</a>&nbsp;
+  <a [routerLink]="['/cursos']">cursos</a>&nbsp;
+</nav>
 <p>Esto viene de app component</p>
 <button (click)="toggleLibros()">
   {{ mostrarLibros ? 'Ocultar Libros' : 'Mostrar Libros' }}
@@ -9,4 +15,4 @@
 
 <app-libros *ngIf="mostrarLibros"></app-libros>
 <app-peliculas *ngIf="mostrarPeliculas"></app-peliculas>
-<app-zapatilla></app-zapatilla>
+<router-outlet></router-outlet>
